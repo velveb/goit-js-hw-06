@@ -1,39 +1,45 @@
 // ! допоміг GOOGL
 
-const render = document.querySelector('[data-create]');
-const destroy = document.querySelector('[data-destroy]');
+//? final
+
+const input = document.querySelector("#controls input");
+const createboxBtn = document.querySelector('[data-create]');
+const deleteboxBtn = document.querySelector('[data-destroy]');
 const boxes = document.querySelector("#boxes");
 
-
-render.addEventListener("click", getAmount);
-destroy.addEventListener("click", destroyBoxes);
-
-
-function getAmount() {
-  const amount = + document.querySelector("#controls input").value;
-  createBoxes(amount);
+function inputChange (e) {
+  input.setAttribute("count", Number(e.currentTarget.value));
 };
+input.addEventListener("input", inputChange);
 
-function createBoxes(amount) {
-  const basicSize = 30;
-  const fragment = document.createDocumentFragment();
-  for (let i = 0; i < amount; i++) {
-    const size = basicSize + i * 10;
-    const div = document.createElement("div");
-    div.style.cssText = `width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()}`;
-    fragment.appendChild(div);
-  };
-  boxes.appendChild(fragment);
+ let baseboxSize = 30;
+
+ function  createbox () {
+  let countBox = Number(input.getAttribute("count"));
+  for (let i = 0; i < countBox; i++) {
+    baseboxSize += 10;
+    const newBox = document.createElement("div");
+    newBox.style.background = getRandomHexColor();
+    newBox.style.height = baseboxSize + "px";
+    newBox.style.width = baseboxSize + "px";
+    newBox.style.margin = "10px";
+    newBox.classList.add("new-box");
+    boxes.append(newBox);
+  }
 };
+createboxBtn.addEventListener("click", createbox);
 
+ function  deletebox () {
+  const allNewBoxes = document.querySelectorAll(".new-box");
+  for (let allNewBoxe of allNewBoxes) {
+    boxes.removeChild(allNewBoxe);
+  }
+ };
 
-function destroyBoxes() {
-  boxes.innerHTML = "";
-};
+deleteboxBtn.addEventListener("click", deletebox);
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
     .padStart(6, 0)}`;
 };
-

@@ -15,27 +15,26 @@ const images = [
 
 
 
+
 const gallery = document.querySelector(".gallery");
 const imgGallery = images.map(({ url, alt }) => {
     console.log(alt);
-    return `<li.style.display= "flex", style.justify-content= "space-between"><img alt='${alt}' src='${url}' height= 200px, width= 30%></li>`;
+    return `<li>
+           <img alt='${alt}'; src='${url}'; height= 200px, width= 200px>
+    </li>`;
 }).join(" ");
+
 gallery.insertAdjacentHTML("beforeend", ` ${imgGallery}`);
 
-console.log(imgGallery);
+gallery.setAttribute("style", "list-style-type:none; display: flex; justify-content:space-between");
 
 
 
 
 
 
-// const list = document.querySelector(".list");
 
-// const newTechnologies = ["React", "TypeScript", "Node.js"];
-// const markup = newTechnologies
-//   .map((technology) => `<li class="list-item new">${technology}</li>`)
-//   .join("");
 
-// list.insertAdjacentHTML("beforeend", markup);
-// list.insertAdjacentHTML("abeforebegin", "<h2>Popular technologies</h2>");
-// console.log(markup);
+
+
+

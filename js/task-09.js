@@ -16,3 +16,8 @@ function onChangeRgb() {
   document.body.setAttribute('style', `background-color: ${changeColor}`)
   
 };
+
+
+
+
+
