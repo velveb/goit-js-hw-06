@@ -34,6 +34,7 @@ createboxBtn.addEventListener("click", createbox);
   for (let allNewBoxe of allNewBoxes) {
     boxes.removeChild(allNewBoxe);
   }
+  baseboxSize = 30;
  };
 
 deleteboxBtn.addEventListener("click", deletebox);
